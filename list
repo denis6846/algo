@@ -19,7 +19,7 @@ void list_init(List *l) {
     l->size = 0;
 }
 
-/* Insertion en tête : O(1) */
+/* Insertion en tête */
 void list_insert_head(List *l, int x) {
     Node *n = malloc(sizeof(Node));
     if (!n) { perror("malloc"); exit(EXIT_FAILURE); }
@@ -30,7 +30,7 @@ void list_insert_head(List *l, int x) {
     l->size++;
 }
 
-/* Insertion en queue (append) : O(1) grâce à tail */
+/* Insertion en queue (append),grâce à tail */
 void list_append(List *l, int x) {
     Node *n = malloc(sizeof(Node));
     if (!n) { perror("malloc"); exit(EXIT_FAILURE); }
@@ -45,7 +45,7 @@ void list_append(List *l, int x) {
     l->size++;
 }
 
-/* Suppression en tête : O(1). Retourne 1 si OK, 0 si liste vide */
+/* Suppression en tête */
 int list_remove_head(List *l, int *out) {
     if (l->head == NULL) return 0;
     Node *n = l->head;
@@ -57,7 +57,7 @@ int list_remove_head(List *l, int *out) {
     return 1;
 }
 
-/* Suppression de la première occurrence de x : O(n) */
+/* Suppression de la première occurrence de x */
 int list_remove_value(List *l, int x) {
     Node *prev = NULL, *cur = l->head;
     while (cur != NULL && cur->value != x) {
@@ -73,14 +73,14 @@ int list_remove_value(List *l, int x) {
     return 1;
 }
 
-/* Recherche : O(n) */
+/* Recherche */
 int list_search(const List *l, int x) {
     for (Node *cur = l->head; cur != NULL; cur = cur->next)
         if (cur->value == x) return 1;
     return 0;
 }
 
-/* Lecture / affichage : O(n) */
+/* Lecture / affichage */
 void list_print(const List *l) {
     printf("[");
     for (Node *cur = l->head; cur != NULL; cur = cur->next)
