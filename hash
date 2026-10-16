@@ -12,8 +12,8 @@ typedef struct Entry {
 
 typedef struct {
     Entry **buckets;
-    int size;       /* nombre de cases du tableau */
-    int count;      /* nombre de paires stockées */
+    int size;       
+    int count;   
 } HashTable;
 
 static char *str_dup(const char *s) {
@@ -37,7 +37,7 @@ void ht_init(HashTable *ht, int size) {
     ht->count = 0;
 }
 
-/* Insertion / mise à jour : O(1) en moyenne */
+/* Insertion / mise à jour */
 void ht_put(HashTable *ht, const char *key, const char *value) {
     unsigned int idx = hash(key, ht->size);
     for (Entry *e = ht->buckets[idx]; e != NULL; e = e->next) {
@@ -56,7 +56,7 @@ void ht_put(HashTable *ht, const char *key, const char *value) {
     ht->count++;
 }
 
-/* Recherche : retourne NULL si la clé n'existe pas */
+/* Recherche */
 const char *ht_get(const HashTable *ht, const char *key) {
     unsigned int idx = hash(key, ht->size);
     for (Entry *e = ht->buckets[idx]; e != NULL; e = e->next)
@@ -64,7 +64,7 @@ const char *ht_get(const HashTable *ht, const char *key) {
     return NULL;
 }
 
-/* Suppression : retourne 1 si supprimée, 0 sinon */
+/* Suppression */
 int ht_delete(HashTable *ht, const char *key) {
     unsigned int idx = hash(key, ht->size);
     Entry *prev = NULL, *e = ht->buckets[idx];
