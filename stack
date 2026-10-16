@@ -14,7 +14,7 @@ void stack_init(Stack *s, int max_size) {
 int stack_is_empty(const Stack *s) { return s->size == 0; }
 int stack_is_full(const Stack *s)  { return s->size == s->max_size; }
 
-/* Push : O(1). Retourne 0 si pile pleine */
+/* Push */
 int stack_push(Stack *s, int x) {
     if (stack_is_full(s)) return 0;
     s->data[s->size] = x;
