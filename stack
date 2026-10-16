@@ -22,14 +22,14 @@ int stack_push(Stack *s, int x) {
     return 1;
 }
 
-/* Peek : O(1). Retourne 0 si pile vide */
+/* Peek */
 int stack_peek(const Stack *s, int *out) {
     if (stack_is_empty(s)) return 0;
     *out = s->data[s->size - 1];
     return 1;
 }
 
-/* Pop : O(1). Retourne 0 si pile vide */
+/* Pop */
 int stack_pop(Stack *s, int *out) {
     if (stack_is_empty(s)) return 0;
     *out = s->data[s->size - 1];
